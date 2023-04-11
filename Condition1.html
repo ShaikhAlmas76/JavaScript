@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let addmision = alert("tell me  your marks")
+        addmision = prompt("enter your marks")
+        addmision = Number.parseInt(addmision)
+
+        function faill() {
+            return console.log("faill");
+        }
+
+        if (addmision <= 35) {
+            faill()
+        }
+        else if (addmision > 35 && addmision < 50) {
+            console.log("avr");
+        }
+        else if (addmision > 50 && addmision < 80) {
+            console.log("good");
+        }
+        // else if (addmision >= 80 && addmision <= 100) {
+        // console.log("aje j avi ja ");
+        // }
+        else if (addmision > 100) {
+            console.log("error");
+        }
+        else {
+            document.write("are you  eligible");
+            console.log("are you  eligible");
+        }
+
+    </script>
+</body>
+
+</html>
