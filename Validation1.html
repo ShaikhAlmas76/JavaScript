@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .sec {
+            background-color: gray;
+            height: 800px;
+
+        }
+
+        .col-50 {
+            border: 2px solid;
+            width: 50%;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: rgb(172, 169, 82);
+        }
+
+        p {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <section class="sec">
+        <div class="col-50">
+            <form onsubmit="return validForm()">
+                <input type="text" required id="username" placeholder="enter your name"> <br>
+                <p id="usererror"></p>
+                <input type="password" id="userpassword" placeholder="enter your password" name="" id=""> <br>
+                <p id="passworderror"></p>
+                <input type="submit" value="login">
+                <input type="checkbox" name="" id="">
+            </form>
+        </div>
+    </section>
+
+    <script>
+        let username = document.getElementById("username")
+        let password = document.getElementById("userpassword")
+        let usererror = document.getElementById("usererror")
+        let passworderror = document.getElementById("passworderror")
+        let count = 1
+
+        console.log(usererror);
+        console.log(passworderror);
+        function validForm() {
+
+            if (username.value == "") {
+                usererror.innerHTML = "enter your name"
+                count = 0
+            }
+            else {
+                document.getElementById("usererror").innerHTML = ""
+                count = 1
+            }
+            if (password.value == "") {
+                // document.getElementById("usererror").innerHTML = "enter your password"
+                passworderror.innerHTML = "enter your password fisrt"
+                count = 0
+            }
+            else if (password.value.length < 8) {
+                passworderror.innerHTML = "max 8 char"
+                count = 0
+            }
+            else {
+                document.getElementById("passworderror").innerHTML = ""
+                count = 1
+            }
+            if (count) {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+    </script>
+</body>
+
+</html>
