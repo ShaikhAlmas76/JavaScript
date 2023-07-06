@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .sec {
+            background-color: rgb(195, 250, 29);
+            border: 2px solid black;
+            width: 25%;
+            margin: 0 auto;
+        }
+
+        .form {
+            padding: 100px 100px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="sec">
+        <div class="form">
+            <form onsubmit="return validform() ">
+                USERNAME <input type="text" id="username" placeholder="enter your name"><br>
+                <p id="usererror"></p>
+                PASSWORD <input type="password" id="pw" placeholder="enter password"><br>
+                <p id="pwerror"></p>
+                GENDER <input type="radio" name="gender" id="gender">Male
+                <input type="radio" name="gender" id="gender1">Female
+                <p id="option"></p>
+                <input type="submit" value="login"><br>
+            </form>
+
+
+        </div>
+    </section>
+    <script>
+        let username = document.getElementById("username")
+        let pw = document.getElementById("pw")
+        let usererror = document.getElementById("usererror")
+        let pwerror = document.getElementById("pwerror")
+        let gender = document.getElementById("gender")
+        let gender1 = document.getElementById("gender1")
+        let option = document.getElementById("option")
+
+        function validform() {
+            if (username.value == "") {
+                usererror.innerHTML = "enter username"
+                event.preventDefault()
+            }
+            else {
+                usererror.innerHTML = ""
+
+            }
+
+            if (pw.value == "") {
+                pwerror.innerHTML = "please enter password"
+                event.preventDefault()
+            }
+            else if (pw.value.length < 8) {
+                pwerror.innerHTML = "max 8 character"
+                event.preventDefault()
+            }
+            else {
+                pwerror.innerHTML = ""
+            }
+            if (gender.checked == true || gender1.checked == true) {
+                option.innerHTML = ""
+
+            }
+            else {
+                option.innerHTML = "please select one option"
+                event.preventDefault()
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
