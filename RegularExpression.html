@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form {
+            width: 40%;
+            background-color: rgb(234, 252, 70);
+            margin: 0 auto;
+            border: 2px solid black;
+            padding: 100px;
+            color: rgb(15, 15, 14);
+            font-size: 20px;
+        }
+
+        .a {
+            font-size: 20px;
+            padding: 0 50px 5px 10px;
+        }
+
+        .p {
+            color: rgb(40, 2, 255);
+        }
+
+        .bt {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="form">
+        <form onsubmit="return validform()">
+            USERNAME:- <input type="text" placeholder="Enter username" id="username" class="a">
+            <p id="p1" class="p"></p>
+            EMAIL:- <input type="text" placeholder="Enter email address" id="email" class="a">
+            <p id="p2" class="p"></p>
+            PASSWORD:- <input type="password" placeholder="Enter password" id="pw" class="a">
+            <p id="p3" class="p"></p>
+            CONFIRM PASSWORD:- <input type="password" placeholder="Enter confirm password" id="cpw" class="a">
+            <p id="p4" class="p"></p>
+            <div class="bt">
+                <input type="submit" value="LOGIN">
+            </div>
+        </form>
+
+        <script>
+            let username = document.getElementById("username")
+            let email = document.getElementById("email")
+            let pw = document.getElementById("pw")
+            let cpw = document.getElementById("cpw")
+            let p1 = document.getElementById("p1")
+            let p2 = document.getElementById("p2")
+            let p3 = document.getElementById("p3")
+            let p4 = document.getElementById("p4")
+
+            function validform() {
+                if (username.value == "") {
+                    p1.innerHTML = "Enter username"
+                    event.preventDefault()
+                }
+                else {
+                    p1.innerHTML = ""
+                }
+                let email1 = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                if (email.value == "") {
+                    p2.innerHTML = "Enter email address"
+                    event.preventDefault()
+                }
+                else if (email.value.length < 12) {
+                    p2.innerHTML = "enter more than 6 character"
+                    event.preventDefault()
+                }
+                else if (email.value != "") {
+                    if (email.value.match(email1)) {
+                        p2.innerHTML = "valid email address"
+                    }
+                    else {
+                        p2.innerHTML = "invalid email address"
+                        event.preventDefault()
+                    }
+                }
+                else {
+                    p2.innerHTML = "confirmed"
+                }
+                if (pw.value == "") {
+                    p3.innerHTML = "Enter password"
+                    event.preventDefault()
+                }
+                else if (pw.value.length < 8) {
+                    p3.innerHTML = "enter at least more than 8 characters"
+                    event.preventDefault()
+                }
+                else if (pw.value != "") {
+                    if (pw.value.search(/[0-9]/) == -1) {
+                        p3.innerHTML = "include at least 1 numeric value "
+                        event.preventDefault()
+
+                    }
+                    else if (pw.value.search(/[a-z]/) == -1) {
+                        p3.innerHTML = "include at least 1 lower case"
+                        event.preventDefault()
+
+                    }
+                    else if (pw.value.search(/[A-Z]/) == -1) {
+                        p3.innerHTML = "include at least 1 upper case"
+                        event.preventDefault()
+
+                    }
+                    else if (pw.value.search(/[!\@\#\$\%\^\&\*]/) == -1) {
+                        p3.innerHTML = "include atleast 1 special symbol from this (!,@,#,$,%,^,&,*)"
+                        event.preventDefault()
+
+                    }
+                    else {
+                        p3.innerHTML = "valid password"
+
+                    }
+                }
+                else {
+                    p3.innerHTML = ""
+                }
+                if (cpw.value == "") {
+                    p4.innerHTML = "Enter confirm password"
+                    event.preventDefault()
+                }
+                else if (cpw.value == pw.value) {
+                    p4.innerHTML = "password is match"
+                }
+                else {
+                    p4.innerHTML = "sorry!!!! password is not match...."
+                    event.preventDefault()
+                }
+
+            }
+        </script>
+    </section>
+</body>
+
+</html>
