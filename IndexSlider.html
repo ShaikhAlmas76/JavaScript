@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider-img {
+            width: 400px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .effect {
+            animation: slidereffect 1s;
+        }
+
+        @keyframes slidereffect {
+            0% {
+                transform: rotate(1deg) scale(0);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1)
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <img class="slider-img" src="https://picsum.photos/seed/picsum/200/300" alt="">
+    <img class="slider-img" src="https://picsum.photos/200/300?grayscale" alt="">
+    <img class="slider-img" src="https://picsum.photos/200/300/?blur" alt="">
+    <img class="slider-img" src="https://picsum.photos/id/870/200/300?grayscale&blur=2" alt="">
+
+    <script>
+
+        counter = 0
+        function Slider() {
+            var sliderImage = document.getElementsByClassName("slider-img")
+            for (let index = 0; index < sliderImage.length; index++) {
+                const element = sliderImage[index];
+                element.style.display = "none"
+                sliderImage[index].classList.remove("effect")
+            }
+            if (counter >= sliderImage.length) {
+                counter = 0
+            }
+            // console.log("counter",counter);
+            // console.log("counter",sliderImage.length);
+            sliderImage[counter].style.display = "block"
+            sliderImage[counter].classList.add("effect")
+            // setInterval(Slider,2000);
+            counter++
+            setTimeout(Slider, 5000);
+        }
+        Slider()
+    </script>
+</body>
+
+</html>
